@@ -2,43 +2,39 @@ import matplotlib.path as mpath
 from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.lines import Line2D
 
-# ======================================================================
-# Официальные цвета бренда
-# ======================================================================
-GREEN = "#21A038"    # основной фирменный зелёный
-BLUE = "#0098F8"     # синий из градиента галочки
-YELLOW = "#F1E813"   # жёлтый из градиента галочки
+GREEN = "#21A038"
+BLUE = "#0098F8"
+YELLOW = "#F1E813"
 BLACK = "#000000"
 WHITE = "#FFFFFF"
-
-# ======================================================================
-# Производные оттенки (для различения категорий на графиках)
-# ======================================================================
 GREEN_DARK = "#0D6E27"
 GREEN_LIGHT = "#8DD9A3"
-MINT = "#BFEACB"       # светлый мятный — фон "обучающих" блоков
+MINT = "#BFEACB"
 GRAY = "#8C8C8C"
-GRAY_LIGHT = "#E6E6E6"  # фон "неиспользуемых" блоков
+GRAY_LIGHT = "#E6E6E6"
+ERROR_RED = "#D64545"
+TRAIN_LINE = BLUE
+TEST_LINE = GREEN
+OOB_LINE = GREEN_DARK 
+NEUTRAL_LINE = GRAY
+BASE_MODEL_PALETTE = [BLUE, GREEN, "#5B8DEF", "#7A4FE0", GREEN_DARK, GRAY]
 
-# ======================================================================
-# Смысловые роли цветов в диаграммах кросс-валидации
-# ======================================================================
+
 FOLD_COLORS = {
-    "train": MINT,     # обучающий блок
-    "test": GREEN,     # тестовый блок
-    "unused": GRAY_LIGHT,  # не используется на этой итерации
+    "train": MINT,
+    "test": GREEN,
+    "unused": GRAY_LIGHT,
 }
 
-# контрастных оттенков, чтобы уверенно различать до 8 категорий.
 CATEGORY_PALETTE = [
-    GREEN,        # 0
-    BLUE,         # 1
-    YELLOW,        # 2 (используем на тёмном/светлом фоне с чёрной обводкой)
-    GREEN_DARK,   # 3
-    "#5B8DEF",          # 4 — дополнительный синий оттенок (не офиц. цвет бренда)
-    "#7A4FE0",          # 5 — дополнительный фиолетовый акцент (не офиц. цвет бренда)
-    GRAY,          # 6
-    GREEN_LIGHT,  # 7
+    GREEN,
+    BLUE,
+    YELLOW,
+    GREEN_DARK,
+    "#5B8DEF",
+    "#7A4FE0",
+    GRAY,
+    GREEN_LIGHT,
 ]
 
 
@@ -87,3 +83,8 @@ def test_marker_legend_handle(
         [0], [0], marker="x", color=color, markersize=markersize,
         markeredgewidth=1.4, alpha=0.75, linestyle="none", label=label
     )
+
+
+def base_model_color(i):
+    """Цвет i-й базовой модели на диаграммах (с циклическим повтором)."""
+    return BASE_MODEL_PALETTE[i % len(BASE_MODEL_PALETTE)]
