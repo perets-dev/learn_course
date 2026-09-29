@@ -3,7 +3,7 @@
 ## Инструкция
 
 1. Создайте папку data и поместите туда файл [housing.csv](https://www.kaggle.com/code/shreayan98c/boston-house-price-prediction/input)
-2. Создайте окружение Python - `conda create -n "week_4" python=3.10`
+2. Создайте окружение Python - `conda create -n "week_4" python=3.11`
 3. Активируйте окружение Python - `conda activate week_4`
 4. установите библиотеки из requirements.txt - `pip install -r requirements.txt`
 
