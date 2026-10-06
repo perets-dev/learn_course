@@ -311,7 +311,7 @@ uv run jupyter lab                          # запустить Jupyter из о
 uv venv                                     # создать .venv
 uv pip install -r requirements.txt          # то же, что pip, но в разы быстрее
 uv pip freeze > requirements.txt
-uv export --format requirements-txt > requirements.txt   # выгрузить из uv.lock
+uv export --format requirements.txt > requirements.txt   # выгрузить из uv.lock
 ```
 
 **Конфигурационные файлы uv**
