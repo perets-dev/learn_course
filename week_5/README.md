@@ -63,3 +63,22 @@
 | 43 | `relative_humidity_d91_d120` | Относительная влажность в дни 91–120 |
 | 44 | `trash` | неизвестная переменная |
 | 45 | `Paddy yield in Kg` | **Целевая переменная** — урожайность риса |
+
+
+## Структура
+
+```
+├── 01_preprocessing.ipynb        аудит, дубликаты, отделение test.csv, базовый Pipeline + ColumnTransformer
+├── 02_feature_engineering.ipynb  анализ признаков, PaddyFeatureGenerator, сравнение 3 препроцессоров в GridSearchCV
+├── 03_modeling.ipynb             train/valid, 9 моделей на CV, подбор гиперпараметров, сохранение лучшей
+├── 04_test_view.ipynb            модель на сыром test.csv, метрики, анализ остатков, выводы
+├── modules/
+│   ├── style.py                  стиль и палитра графиков
+│   ├── plots.py                  функции визуализации
+│   └── transformers.py           списки колонок, clean_column_names, PaddyFeatureGenerator, PerHectareRegressor
+├── data/
+│   ├── paddydataset.csv          исходный датасет (UCI, id 1186)
+│   ├── train.csv                 создаётся в 01 (80 % строк после удаления дубликатов)
+│   └── test.csv                  создаётся в 01 (20 %, исходный формат, открывается только в 04)
+└── models/                    preprocessor_base.joblib, preprocessor_fe.joblib, best_model.joblib, model_info.json
+```
